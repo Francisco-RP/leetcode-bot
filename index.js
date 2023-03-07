@@ -118,11 +118,10 @@ function formatText(num, title, dir, difficulty) {
  * @param {string} text
  */
 async function postQuestion(text) {
-  console.log(`🚀 ~ file: index.ts:86 ~ postQuestion ~ text:`, text);
   if (SLACK_WEBHOOK_URL) {
     const response = await fetchLikeAxios(SLACK_WEBHOOK_URL, {
       method: "post",
-      data: JSON.stringify({ text }),
+      body: JSON.stringify({ text }),
     });
     console.info(response.status, text);
   } else {
