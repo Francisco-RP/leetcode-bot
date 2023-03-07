@@ -14,6 +14,9 @@ class ErrorLikeAxios extends Error {
 async function fetchLikeAxios(path, options = {}) {
   const defaultOptions = {
     method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
   };
 
   const mergedOptions = { ...defaultOptions, ...options };
