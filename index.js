@@ -8,7 +8,7 @@ const LEETCODE_ALL_QUESTION_URL = `${LEETCODE_BASE_URL}api/problems/all/`;
 const LEETCODE_RECOMMENDED_LIST_URL = `${LEETCODE_BASE_URL}list/api/get_list/xo2bgr0r/`;
 
 // difficulty defaults to "Medium"
-const { SLACK_WEBHOOK_URL, DIFFICULTY_MAX = 2 } = process.env;
+const { SLACK_WEBHOOK_URL, DIFFICULTY = 2 } = process.env;
 
 // the response returns difficulty as levels 1(easy), 2(medium), 3(hard)
 const DIFFICULTIES = ["", "Easy", "Medium", "Hard"];
@@ -62,7 +62,7 @@ async function getData(url) {
  */
 function getFreeQuestions(data) {
   return data.stat_status_pairs.filter(
-    ({ difficulty, paid_only }) => difficulty.level <= DIFFICULTY_MAX && !paid_only
+    ({ difficulty, paid_only }) => difficulty.level <= DIFFICULTY && !paid_only
   );
 }
 
